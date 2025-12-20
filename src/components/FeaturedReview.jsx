@@ -15,7 +15,11 @@ export function FeaturedReview({review}) {
                             </span>
                             <span className="flex items-center gap-1">
                                 <Calendar size={14}/>
-                                {review.date}
+                                {review.date.toLocaleDateString('en-US', {
+                                    month: 'short',
+                                    day: 'numeric',
+                                    year: 'numeric'
+                                })}
                             </span>
                         </div>
                         <p className="text-gray-300 text-lg mb-6">{review.snippet}</p>
