@@ -68,18 +68,18 @@ export default function HomePage() {
                             </h4>
                             <p className="text-gray-600 text-sm mb-3">{review.snippet}</p>
                             <div className="flex items-center gap-3 text-xs text-gray-500">
-                <span className="flex items-center gap-1">
-                  <User size={12}/>
-                    {review.author}
-                </span>
                                 <span className="flex items-center gap-1">
-                  <Calendar size={12}/>
+                                  <User size={12}/>
+                                    {review.author}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <Calendar size={12}/>
                                     {review.date.toLocaleDateString('en-US', {
                                         month: 'short',
                                         day: 'numeric',
                                         year: 'numeric'
                                     })}
-                </span>
+                                </span>
                             </div>
                         </article>
                     ))}

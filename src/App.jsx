@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router";
 import MainLayout from "./layouts/MainLayout.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import ReviewPage from "./pages/ReviewPage.jsx";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
                 <Route element={<MainLayout/>}>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/about" element={<AboutPage/>}/>
+                    <Route path="/review/:reviewName" element={<ReviewPage/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
