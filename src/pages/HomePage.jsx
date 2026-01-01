@@ -1,16 +1,19 @@
 import React from "react";
 import {FeaturedReview} from "../components/FeaturedReview.jsx";
 import {Star, User, Calendar} from "lucide-react";
-import {reviews} from "./reviews/reviews-meta.js";
+import reviews from "./reviews/index.json";
+import {useNavigate} from "react-router";
 
 const categories = ['all', 'RPG', 'Platformer', 'Fighting', 'Roguelike'];
 
 export default function HomePage() {
+    const navigate = useNavigate();
+
     const [selectedCategory, setSelectedCategory] = React.useState('all');
 
     const filteredReviews = selectedCategory === 'all'
         ? reviews
-        : reviews.filter(r => r.category === selectedCategory);
+        : reviews.filter(r => r.tags.some(tag => tag === selectedCategory));
 
     return (
         <>
@@ -41,8 +44,10 @@ export default function HomePage() {
             <section className="max-w-7xl mx-auto px-6 py-12">
                 <h3 className="text-3xl font-bold mb-8 border-l-4 border-orange-500 pl-4">LATEST REVIEWS</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredReviews.slice(1).map(review => (
-                        <article key={review.id} className="group cursor-pointer">
+                    {filteredReviews.map(review => (
+                        <article key={review.id} className="group cursor-pointer"
+                                 onClick={() => navigate(`/review/${review.slug}`)}
+                        >
                             <div className="relative overflow-hidden mb-4">
                                 <img
                                     src={review.image}
@@ -50,8 +55,15 @@ export default function HomePage() {
                                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute top-3 right-3 bg-black text-white px-3 py-1 text-xs font-bold">
-                                    {review.category}
+                                    {review.tags[0]}
                                 </div>
+                            </div>
+                            <div className="flex items-center gap-1 mb-2">
+                                {review.tags.map(tag => (
+                                    <div className="bg-black text-white px-3 py-1 text-xs font-bold">
+                                        {tag}
+                                    </div>
+                                ))}
                             </div>
                             <div className="flex items-center gap-1 mb-2">
                                 {[...Array(5)].map((_, i) => (
@@ -74,7 +86,7 @@ export default function HomePage() {
                                 </span>
                                 <span className="flex items-center gap-1">
                                     <Calendar size={12}/>
-                                    {review.date.toLocaleDateString('en-US', {
+                                    {new Date(review.date).toLocaleDateString('en-US', {
                                         month: 'short',
                                         day: 'numeric',
                                         year: 'numeric'

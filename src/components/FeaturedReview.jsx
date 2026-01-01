@@ -1,6 +1,10 @@
 import {Star, Calendar, User} from 'lucide-react';
+import {useNavigate} from "react-router";
+import React from "react";
 
 export function FeaturedReview({review}) {
+    const navigate = useNavigate();
+
     return (
         <section className="bg-black text-white">
             <div className="max-w-7xl mx-auto px-6 py-12">
@@ -8,6 +12,13 @@ export function FeaturedReview({review}) {
                     <div>
                         <span className="text-orange-500 text-sm font-bold tracking-wide">FEATURED REVIEW</span>
                         <h2 className="text-5xl font-bold mt-3 mb-4 leading-tight">{review.title}</h2>
+                        <div className="flex items-center gap-2 mb-4">
+                            {review.tags.map(tag => (
+                                <div className="bg-orange-500 text-black rounded-lg px-3 py-1 text-sm font-bold">
+                                    {tag}
+                                </div>
+                            ))}
+                        </div>
                         <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
                             <span className="flex items-center gap-1">
                                 <User size={14}/>
@@ -15,7 +26,7 @@ export function FeaturedReview({review}) {
                             </span>
                             <span className="flex items-center gap-1">
                                 <Calendar size={14}/>
-                                {review.date.toLocaleDateString('en-US', {
+                                {new Date(review.date).toLocaleDateString('en-US', {
                                     month: 'short',
                                     day: 'numeric',
                                     year: 'numeric'
@@ -36,7 +47,9 @@ export function FeaturedReview({review}) {
                             <span className="text-2xl font-bold text-orange-500">{review.rating}/5</span>
                         </div>
                         <button
-                            className="mt-6 bg-orange-500 text-black font-bold px-8 py-3 hover:bg-orange-400 transition-colors">
+                            className="mt-6 bg-orange-500 text-black font-bold px-8 py-3 hover:bg-orange-400 transition-colors cursor-pointer"
+                            onClick={() => navigate(`/review/${review.slug}`)}
+                        >
                             READ FULL REVIEW
                         </button>
                     </div>

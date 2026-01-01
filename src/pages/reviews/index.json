@@ -1,5 +1,21 @@
 [
   {
+    "slug": "foregone",
+    "title": "Foregone - A looter love letter",
+    "game": "Foregone",
+    "image": "https://www.slythergames.com/wp-content/uploads/2020/03/Forgone-Logo.jpg",
+    "rating": 3.5,
+    "date": "2025-12-27T00:00:00.000Z",
+    "tags": [
+      "looter",
+      "action",
+      "platformer",
+      "rpg"
+    ],
+    "author": "Daniel Griffiths",
+    "snippet": "Diablo meets Dead Cells in a slightly lackluster looter"
+  },
+  {
     "slug": "kaamos",
     "title": "Kaamos - Bleak and Minimal Mobile Brilliance",
     "game": "Kaamos",
@@ -13,5 +29,19 @@
     ],
     "author": "Daniel Griffiths",
     "snippet": "A bleak and atmospheric roguelike putting a methodical twist on the classic mobile game tile-matching genre."
+  },
+  {
+    "slug": "momodora-moonlit-farewell",
+    "title": "Momodora - Moonlit Farewell",
+    "game": "Momodora Moonlit Farewell",
+    "image": "https://e.snmc.io/lk/l/x/16123ba8bc66dedf162a950ed63acf56/11610919",
+    "rating": 3,
+    "date": "2025-12-30T00:00:00.000Z",
+    "tags": [
+      "metroidvania",
+      "platformer"
+    ],
+    "author": "Daniel Griffiths",
+    "snippet": "Momodora - Moonlit Farewell is less a grand goodbye and more a lackluster handwave"
   }
 ]
