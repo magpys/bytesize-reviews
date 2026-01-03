@@ -6,7 +6,9 @@ export default function MainLayout() {
     return (
         <div className="min-h-screen bg-white">
             <Header/>
-            <Outlet/>
+            <div className="pt-26">
+                <Outlet/>
+            </div>
             <Footer/>
         </div>
     );

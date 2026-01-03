@@ -1,6 +1,6 @@
 export function Header() {
     return (
-        <header className="bg-black text-white border-b-4 border-orange-500">
+        <header className="bg-black text-white border-b-4 border-orange-500 fixed z-10 top-0 left-0 right-0">
             <div className="max-w-7xl mx-auto px-6 py-6">
                 <div className="flex items-center justify-between">
                     <a href="/">
@@ -8,8 +8,7 @@ export function Header() {
                         <p className="text-gray-400 text-sm mt-1">Gaming reviews in 255 words or fewer!</p>
                     </a>
                     <nav className="flex gap-6 text-sm font-medium">
-                        <a href="#" className="hover:text-orange-500 transition-colors">REVIEWS</a>
-                        <a href="#" className="hover:text-orange-500 transition-colors">LATEST</a>
+                        <a href="/" className="hover:text-orange-500 transition-colors">REVIEWS</a>
                         <a href="/about" className="hover:text-orange-500 transition-colors">ABOUT</a>
                     </nav>
                 </div>

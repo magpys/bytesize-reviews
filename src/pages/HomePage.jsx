@@ -2,22 +2,23 @@ import React from "react";
 import {FeaturedReview} from "../components/FeaturedReview.jsx";
 import {Star, User, Calendar} from "lucide-react";
 import reviews from "./reviews/index.json";
+import categories from "./reviews/categories.json";
 import {useNavigate} from "react-router";
-
-const categories = ['all', 'RPG', 'Platformer', 'Fighting', 'Roguelike'];
 
 export default function HomePage() {
     const navigate = useNavigate();
 
     const [selectedCategory, setSelectedCategory] = React.useState('all');
 
+    const sortedReviews = reviews.sort((a, b) => b.date.localeCompare(a.date));
+
     const filteredReviews = selectedCategory === 'all'
-        ? reviews
-        : reviews.filter(r => r.tags.some(tag => tag === selectedCategory));
+        ? sortedReviews
+        : sortedReviews.filter(r => r.tags.some(tag => tag === selectedCategory));
 
     return (
         <>
-            <FeaturedReview review={reviews[0]}/>
+            <FeaturedReview review={sortedReviews[0]}/>
             {/* Category Filter */}
             <section className="border-b-2 border-black">
 
@@ -27,7 +28,7 @@ export default function HomePage() {
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`text-sm font-bold tracking-wide uppercase transition-colors ${
+                                className={`text-sm font-bold tracking-wide uppercase transition-colors cursor-pointer ${
                                     selectedCategory === cat
                                         ? 'text-orange-500 border-b-2 border-orange-500'
                                         : 'text-black hover:text-orange-500'
